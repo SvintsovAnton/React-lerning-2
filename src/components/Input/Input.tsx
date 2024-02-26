@@ -1,6 +1,8 @@
 import "./styles.css";
 
-function Input({ id, name, placeholder, label, type = "text" }) {
+import InputProps from "./types";
+
+function Input({ id, name, placeholder, label, type = "text" }: InputProps) {
   return (
     <div className="inputcomponent-container">
       <label htmlFor={id} className="inputcomponent-label">
