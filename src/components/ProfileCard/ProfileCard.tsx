@@ -1,26 +1,19 @@
+import { ProfileCardProps } from "./types";
+
 import "./styles.css";
-import { ProfileCard } from "./types";
 
-// import normalizeFirstLastName, { profile } from "./data";
-
-// Что такое props - это обьект, через котроый вы можете передавать данные от родителя - ребенку
 function ProfileCard({
   profileData,
   imgSrc,
   children = <h1>User Card</h1>,
-}: ProfileCard) {
-  console.log(profileData);
-  // К нам пришли данные с сервера
-
-  // JSX: Передача html кода переменной
-  // const cardName = <h1>User info</h1>;
-
+}: ProfileCardProps) {
   const normalizeFirstLastName = () => {
     return `${profileData.firstName} ${profileData.lastName}`;
   };
 
   return (
     <div className="profile-card">
+      {children}
       <div className="avatar-control">
         <img className="profile-avatar" alt="Profile Avatar" src={imgSrc} />
       </div>
@@ -32,5 +25,4 @@ function ProfileCard({
   );
 }
 
-// 3 cпособ экспорта - как default
 export default ProfileCard;

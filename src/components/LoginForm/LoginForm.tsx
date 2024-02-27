@@ -1,10 +1,9 @@
 import "./styles.css";
-import { LoginFormProps } from "./types";
 
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 
-function LoginForm({}: LoginFormProps) {
+function LoginForm() {
   return (
     <form className="loginform-wrapper">
       <p className="loginform-name">Login form</p>

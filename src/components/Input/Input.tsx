@@ -1,6 +1,5 @@
+import { InputProps } from "./types";
 import "./styles.css";
-
-import InputProps from "./types";
 
 function Input({ id, name, placeholder, label, type = "text" }: InputProps) {
   return (
