@@ -1,6 +1,6 @@
 import { CounterProps } from "./types";
 
-import "./styles.css";
+import { CounterWrapper, ButtonControl, CountWindow } from "./styles";
 
 import Button from "../Button/Button";
 
@@ -21,15 +21,15 @@ function Counter({ count, onMinus, onPlus }: CounterProps) {
   //   setCount((prevValue) => prevValue - 1);
   // };
   return (
-    <div className="counter-wrapper">
-      <div className="button-control">
-        <Button name="-" onClick={onMinus} />
-      </div>
-      <p className="count">{count}</p>
-      <div className="button-control">
-        <Button name="+" onClick={onPlus} />
-      </div>
-    </div>
+    <CounterWrapper>
+      <ButtonControl>
+        <Button name="-" onClick={onMinus} disabled={false} />
+      </ButtonControl>
+      <CountWindow>{count}</CountWindow>
+      <ButtonControl>
+        <Button name="+" onClick={onPlus} disabled={false} />
+      </ButtonControl>
+    </CounterWrapper>
   );
 }
 

@@ -20,10 +20,10 @@ function Lesson22() {
       {/* <p style={{color: 'blue', fontSize: "30px"}}>Lesson 22</p> */}
       <PageTitle isRed={false}>Lesson 22</PageTitle>
       <ButtonConrol>
-        <Button type="button" name="Send" />
+        <Button type="button" name="Send" disabled={false} />
       </ButtonConrol>
       <ButtonConrol>
-        <Button type="button" isRed={true} name="Delete" />
+        <Button type="button" isRed={true} name="Delete" disabled={false} />
       </ButtonConrol>
       <ContainerWrapper>
         <GreenContainer>Green</GreenContainer>
