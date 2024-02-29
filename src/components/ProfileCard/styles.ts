@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const MainProfileCard = styled.div`
+export const ProfileCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,4 +22,6 @@ export const ProfileAvatar = styled.img`
   width: 100%;
 `;
 
-export const HTeg = styled.h2``;
+export const FirstLastName = styled.h2``;
+
+export const ProfileCardInfo = styled.p``;

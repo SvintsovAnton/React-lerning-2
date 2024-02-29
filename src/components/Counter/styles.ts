@@ -19,7 +19,7 @@ export const ButtonControl = styled.div`
   width: 80px;
 `;
 
-export const CountWindow = styled.p`
+export const Count = styled.p`
   font-size: 40px;
   color: white;
 `;

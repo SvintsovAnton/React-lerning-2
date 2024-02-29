@@ -33,14 +33,3 @@ export const Count = styled.p`
   font-size: 40px;
   color: white;
 `;
-
-export const Image = styled.img`
-  width: 100%;
-  height: 100%;
-`;
-
-export const ImageControl = styled.img`
-  width: 70px;
-  height: 70px;
-  cursor: pointer;
-`;

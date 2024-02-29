@@ -1,4 +1,4 @@
-import Button from "../Button/Button";
+import Button from "components/Button/Button";
 
 import { FeedbackProps } from "./types";
 import {
@@ -6,8 +6,6 @@ import {
   FeedbackControl,
   ButtonWithCountContainer,
   Count,
-  Image,
-  ImageControl,
 } from "./styles";
 
 function Feedback({
@@ -21,18 +19,15 @@ function Feedback({
     <FeedbackWrapper>
       <FeedbackControl>
         <ButtonWithCountContainer>
-          <Button name="Like" onClick={onLike} disabled={false} />
-          {/* <ImageControl onClick={onLike}>
-            <Image src={Like} alt="Like img" />
-          </ImageControl> */}
-          <p className="count">{likes}</p>
+          <Button name="Like" onClick={onLike} />
+          <Count>{likes}</Count>
         </ButtonWithCountContainer>
         <ButtonWithCountContainer>
-          <Button name="Dislike" onClick={onDislike} disabled={false} />
+          <Button name="Dislike" onClick={onDislike} />
           <Count>{dislikes}</Count>
         </ButtonWithCountContainer>
       </FeedbackControl>
-      <Button name="Reset Results" onClick={resetResults} disabled={false} />
+      <Button name="Reset Results" onClick={resetResults} />
     </FeedbackWrapper>
   );
 }

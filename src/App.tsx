@@ -1,22 +1,27 @@
-import "./App.css";
+import GlobalStyles from "styles/GlobalStyles";
 
 // Lessons
-import Lesson20 from "./lessons/Lesson20/Lesson20";
-import Lesson21 from "./lessons/lesson21/Lesson21";
-import Lesson22 from "./lessons/Lesson 22/Lesson22";
+import Lesson20 from "lessons/Lesson20/Lesson20";
+import Lesson21 from "lessons/lesson21/Lesson21";
+import Lesson22 from "lessons/Lesson 22/Lesson22";
+import Lesson23 from "lessons/Lesson 23/Lesson23";
 
 // Homeworks
-import Homework21 from "./homeworks/Homework21";
+import HomeWork20 from "homeworks/Homework20";
+import Homework21 from "homeworks/Homework21";
 import Homework22 from "homeworks/Homework22";
+
 function App() {
   return (
-    <div className="App">
+    <>
+      <GlobalStyles />
       {/* <Lesson20 /> */}
       {/* <Lesson21 /> */}
+      {/* <Lesson22 /> */}
       {/* <Homework20 /> */}
-      {/*<Lesson22 /> */}
-      <Homework22 />
-    </div>
+      {/* <Homework21 /> */}
+      <Lesson23 />
+    </>
   );
 }
 
