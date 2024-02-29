@@ -5,6 +5,7 @@ import { ButtonProps } from "./types";
 // Как типизировать props
 function Button({
   isRed = false,
+  disabled = true,
   name,
   type = "button",
   onClick = () => {},
@@ -12,6 +13,7 @@ function Button({
   return (
     <ButtonComponent
       isRed={isRed}
+      disabled={disabled}
       className="button-component"
       onClick={onClick}
       type={type}
