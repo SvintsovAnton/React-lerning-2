@@ -12,7 +12,7 @@ export const LoginFormWrapper = styled.form`
   background-color: white;
 `;
 
-export const LoginFormName = styled.p`
+export const LoginFormTitle = styled.p`
   font-size: 24px;
 `;
 

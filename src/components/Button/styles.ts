@@ -11,10 +11,20 @@ export const ButtonComponent = styled.button<ButtonComponentProps>`
   border: none;
   border-radius: 4px;
   padding: 20px;
-  background-color: ${({ isRed, disabled }) =>
-    isRed ? "red" : disabled ? "gray" : "#1f27f5"};
+  /* background-color: ${({ isRed, disabled }) =>
+    isRed ? "red" : disabled ? "grey" : "#1f27f5"}; */
+  background-color: ${({ isRed, disabled }) => {
+    if (isRed) {
+      return "red";
+    }
+
+    if (disabled) {
+      return "grey";
+    }
+
+    return "#1f27f5";
+  }};
   color: white;
   font-size: 16px;
-  cursor: pointer;
-  pointer-events: ${({ disabled }) => (disabled ? "none" : "auto")};
+  cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
 `;

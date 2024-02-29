@@ -1,12 +1,25 @@
-import { LoginFormWrapper, LoginFormName, InputsContainer } from "./styles";
+import { useState, ChangeEvent } from "react";
 
-import Button from "../Button/Button";
-import Input from "../Input/Input";
+import Button from "components/Button/Button";
+import Input from "components/Input/Input";
+
+import { LoginFormWrapper, LoginFormTitle, InputsContainer } from "./styles";
 
 function LoginForm() {
+  const [emailValue, setEmailValue] = useState<string>("");
+  const [passwordValue, setPasswordValue] = useState<string>("");
+
+  const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
+    setPasswordValue(event.target.value);
+  };
+
+  const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmailValue(event.target.value);
+  };
+
   return (
     <LoginFormWrapper>
-      <LoginFormName>Login form</LoginFormName>
+      <LoginFormTitle>Login form</LoginFormTitle>
       <InputsContainer>
         <Input
           id="login-email"
@@ -14,18 +27,20 @@ function LoginForm() {
           name="email"
           label="Email"
           type="email"
-          disabled={false}
+          value={emailValue}
+          onChange={onChangeEmail}
         />
         <Input
+          value={passwordValue}
+          onChange={onChangePassword}
           id="login-password"
           placeholder="Enter your password"
           name="password"
           label="Password"
           type="password"
-          disabled={false}
         />
       </InputsContainer>
-      <Button name="Login" disabled={false} />
+      <Button name="Login" />
     </LoginFormWrapper>
   );
 }

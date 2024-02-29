@@ -1,33 +1,17 @@
+import Button from "components/Button/Button";
+
 import { CounterProps } from "./types";
-
-import { CounterWrapper, ButtonControl, CountWindow } from "./styles";
-
-import Button from "../Button/Button";
+import { CounterWrapper, ButtonControl, Count } from "./styles";
 
 function Counter({ count, onMinus, onPlus }: CounterProps) {
-  // Управление сотстоянием происходит в самом компоненте
-  // // Создаем state для нашего Counter
-  // const [count, setCount] = useState(0);
-
-  // // Создаем функцию, которая будет увеличивать наш count на 1
-  // const onPlus = () => {
-  //   setCount((prevValue) => {
-  //     return prevValue + 1;
-  //   });
-  // };
-
-  // // Создаем функцию, которая будет уменьшать наш count на 1
-  // const onMinus = () => {
-  //   setCount((prevValue) => prevValue - 1);
-  // };
   return (
     <CounterWrapper>
       <ButtonControl>
-        <Button name="-" onClick={onMinus} disabled={false} />
+        <Button name="-" onClick={onMinus} />
       </ButtonControl>
-      <CountWindow>{count}</CountWindow>
+      <Count>{count}</Count>
       <ButtonControl>
-        <Button name="+" onClick={onPlus} disabled={false} />
+        <Button name="+" onClick={onPlus} />
       </ButtonControl>
     </CounterWrapper>
   );
