@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 interface ButtonComponentProps {
   isRed: boolean | undefined;
-  disabled: boolean;
 }
 
 export const ButtonComponent = styled.button<ButtonComponentProps>`

@@ -1,6 +1,6 @@
 import { ProfileCardProps } from "./types";
 
-import { MainProfileCard, AvatarControl, ProfileAvatar } from "./styles";
+import { MainProfileCard, AvatarControl, ProfileAvatar, HTeg } from "./styles";
 
 function ProfileCard({
   profileData,
@@ -17,7 +17,7 @@ function ProfileCard({
       <AvatarControl>
         <ProfileAvatar alt="Profile Avatar" src={imgSrc} />
       </AvatarControl>
-      <h2>{normalizeFirstLastName()}</h2>
+      <HTeg>{normalizeFirstLastName()}</HTeg>
       <p>Career: {profileData.career}</p>
       <p>Hair Color: {profileData.hairColor}</p>
       <p>Hobby: {profileData.hobby}</p>
