@@ -22,6 +22,8 @@ function Homework22() {
           placeholder="Input 1"
           id="1"
           label=" "
+          value=" "
+          onChange={() => {}}
         />
       </InputConrol>
       <InputConrol>
@@ -31,6 +33,8 @@ function Homework22() {
           placeholder="Input 2"
           id="1"
           label=" "
+          value=" "
+          onChange={() => {}}
         />
       </InputConrol>
     </div>

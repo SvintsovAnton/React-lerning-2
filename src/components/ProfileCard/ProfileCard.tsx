@@ -1,4 +1,4 @@
-import { ProfileCardProps } from "./types";
+import { ProfileCardProps,  } from "./types";
 
 import {
   ProfileCardContainer,
