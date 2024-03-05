@@ -46,3 +46,13 @@ export const EmployeeInfoText = styled.p`
   font-weight: bold;
   color: black;
 `;
+
+export const EmployeeErrorMassage = styled.p`
+  font-size: 16px;
+  color: red;
+`;
+
+export const InputContainer = styled.div`
+  margin: 0px;
+  padding: 0px;
+`;
