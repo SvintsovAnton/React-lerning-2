@@ -1,1 +1,4 @@
-export interface LoginFormProps {}
+export interface LoginFormValues {
+  email: string;
+  password: string;
+}
