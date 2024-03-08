@@ -1,6 +1,7 @@
 export interface EmployeeInfo {
   name: string;
   lastName: string;
-  ageValue: string;
+  ageValue: number;
   jobPosition: string;
+  rulesOfUse: boolean;
 }
