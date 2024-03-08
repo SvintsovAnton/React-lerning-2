@@ -1,12 +1,11 @@
-import { useState, ChangeEvent, SetStateAction, Dispatch } from "react";
-
+import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import Input from "components/Input/Input";
 import Button from "components/Button/Button";
 
-import { EmployeeInfo } from "./types";
+import { EmployeeInfo, EMPLOYEE_FIELD_NAMES } from "./types";
 import {
   EmployeeFormWrapper,
   EmployeeFormContainer,
@@ -14,126 +13,128 @@ import {
   EmployeeInfoContainer,
   EmployeeInfoText,
   EmployeeTitle,
-  EmployeeErrorMassage,
-  InputContainer,
+  CheckboxContainer,
+  Checkbox,
+  CheckboxLabel,
+  ErrorContainer,
 } from "./styles";
 
 function EmployeeForm() {
   const schema = Yup.object().shape({
-    name: Yup.string()
-      .required("обязательное поле")
-      .min(2, "минимальное количество символов - 2")
-      .max(50, "максимальное количество символов - 50"),
-    lastName: Yup.string()
-      .required("обязательное поле")
-      .max(15, "максимальное количество символов - 15"),
-    ageValue: Yup.number().required("обязательное поле").min(0).max(999),
-    jobPosition: Yup.string().max(30, "максимальное количество символов - 30"),
-    rulesOfUse: Yup.boolean().isTrue(
-      "Вы должны согласиться с правилами использования"
+    [EMPLOYEE_FIELD_NAMES.FIRST_NAME]: Yup.string()
+      .required("Поле Имя обязательное")
+      .min(2, "Минимальное колличество символов 2")
+      .max(50, "Максимальное колличество символов 50"),
+    [EMPLOYEE_FIELD_NAMES.LAST_NAME]: Yup.string()
+      .required("Поле Фамилия обязательное")
+      .max(15, "Максимальное колличество символов 15"),
+    [EMPLOYEE_FIELD_NAMES.AGE]: Yup.string()
+      .required("Поле Возраст обязательное")
+      .min(1, "Минимальное колличество символов 1")
+      .max(3, "Максимальное колличество символов 3"),
+    [EMPLOYEE_FIELD_NAMES.JOB_POSITION]: Yup.string().max(
+      30,
+      "Максимальное колличество символов 30"
+    ),
+    [EMPLOYEE_FIELD_NAMES.AGREEMENT]: Yup.boolean().oneOf(
+      [true],
+      "Это поле обязательное для выбора"
     ),
   });
 
   const formik = useFormik({
     initialValues: {
-      name: "",
-      lastName: "",
-      ageValue: 0,
-      jobPosition: "",
-      rulesOfUse: false,
-    } as EmployeeInfo,
+      [EMPLOYEE_FIELD_NAMES.FIRST_NAME]: "",
+      [EMPLOYEE_FIELD_NAMES.LAST_NAME]: "",
+      [EMPLOYEE_FIELD_NAMES.AGE]: "",
+      [EMPLOYEE_FIELD_NAMES.JOB_POSITION]: "",
+      [EMPLOYEE_FIELD_NAMES.AGREEMENT]: false,
+    },
     validationSchema: schema,
-    onSubmit: (values: EmployeeInfo) => {},
+    validateOnChange: false,
+    validateOnMount: false,
+    onSubmit: (values) => {
+      setUserInfo({
+        name: values.firstName,
+        lastName: values.lastName,
+        ageValue: values.age,
+        jobPosition: values.jobPosition,
+      });
+      setIsShowCard(true);
+    },
   });
 
-  const [isShowCard, setIsShowCard] = useState<boolean>(false);
-  const [rulesOfUse, setRulesOfUse] = useState<boolean>(false);
-  const [showErrors, setshowErrors] = useState<boolean>(false);
-  const [name, setName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
-  const [age, setAge] = useState<number>(0);
-  const [jobPosition, setjobPosition] = useState<string>("");
+  console.log(formik);
 
-  const createEmployeeCard = () => {
-    setshowErrors(true);
-    formik.validateForm().then((errors) => {
-      if (Object.keys(errors).length === 0) {
-        setIsShowCard(true);
-        setName(formik.values.name);
-        setLastName(formik.values.lastName);
-        setAge(formik.values.ageValue);
-        setjobPosition(formik.values.jobPosition);
-      }
-    });
-  };
+  const { firstName, lastName, age, jobPosition, agreement } = formik.values;
+
+  // Создадим state, который решает когда нам карточку показывать, а когда нет
+  const [isShowCard, setIsShowCard] = useState<boolean>(false);
+  // Создаем контейнер(стейт), в котором будет храниться информация для карточки,
+  // чтобы она туда добавлялась только на onClick
+  const [userInfo, setUserInfo] = useState<EmployeeInfo>({
+    name: "",
+    lastName: "",
+    ageValue: "",
+    jobPosition: "",
+  });
 
   return (
     <EmployeeFormWrapper>
-      <EmployeeFormContainer>
-        <InputContainer>
-          <Input
-            id="first_name_id"
-            name="name"
+      <EmployeeFormContainer onSubmit={formik.handleSubmit}>
+        <Input
+          id="first_name_id"
+          name={EMPLOYEE_FIELD_NAMES.FIRST_NAME}
+          onChange={formik.handleChange}
+          value={firstName}
+          label="Имя*"
+          placeholder="Иван"
+          error={formik.errors[EMPLOYEE_FIELD_NAMES.FIRST_NAME]}
+        />
+        <Input
+          id="last_name_id"
+          name={EMPLOYEE_FIELD_NAMES.LAST_NAME}
+          onChange={formik.handleChange}
+          value={lastName}
+          label="Фамилия*"
+          placeholder="Василевский"
+          error={formik.errors[EMPLOYEE_FIELD_NAMES.LAST_NAME]}
+        />
+        <Input
+          id="age_id"
+          name={EMPLOYEE_FIELD_NAMES.AGE}
+          onChange={formik.handleChange}
+          value={age}
+          label="Возраст*"
+          placeholder="25"
+          error={formik.errors[EMPLOYEE_FIELD_NAMES.AGE]}
+        />
+        <Input
+          id="job_position_id"
+          name={EMPLOYEE_FIELD_NAMES.JOB_POSITION}
+          onChange={formik.handleChange}
+          value={jobPosition}
+          label="Должность"
+          placeholder="Старший специалист"
+          error={formik.errors[EMPLOYEE_FIELD_NAMES.JOB_POSITION]}
+        />
+        <CheckboxContainer>
+          <Checkbox
+            id="agreement_id"
+            name={EMPLOYEE_FIELD_NAMES.AGREEMENT}
+            checked={agreement}
             onChange={formik.handleChange}
-            value={formik.values.name}
-            label="Имя*"
-            placeholder="Иван"
           />
-          <EmployeeErrorMassage>
-            {showErrors && formik.errors.name}
-          </EmployeeErrorMassage>
-        </InputContainer>
-        <InputContainer>
-          <Input
-            id="last_name_id"
-            name="lastName"
-            onChange={formik.handleChange}
-            value={formik.values.lastName}
-            label="Фамилия*"
-            placeholder="Василевский"
-          />
-          <EmployeeErrorMassage>
-            {showErrors && formik.errors.lastName}
-          </EmployeeErrorMassage>
-        </InputContainer>
-        <InputContainer>
-          <Input
-            id="age_id"
-            name="ageValue"
-            onChange={formik.handleChange}
-            value={formik.values.ageValue}
-            label="Возраст*"
-            placeholder="25"
-          />
-          <EmployeeErrorMassage>
-            {showErrors && formik.errors.ageValue}
-          </EmployeeErrorMassage>
-        </InputContainer>
-        <InputContainer>
-          <Input
-            id="job_position_id"
-            name="jobPosition"
-            onChange={formik.handleChange}
-            value={formik.values.jobPosition}
-            label="Должность"
-            placeholder="Старший специалист"
-          />
-        </InputContainer>
-        <label>
-          <input
-            type="checkbox"
-            onChange={() => {
-              setRulesOfUse(true);
-              formik.setFieldValue("rulesOfUse", true);
-            }}
-            checked={rulesOfUse}
-          />
-          <p>Я согласен с политикой обработкой данных</p>
-          <EmployeeErrorMassage>
-            {showErrors && formik.errors.rulesOfUse}
-          </EmployeeErrorMassage>
-        </label>
-        <Button name="Создать" onClick={createEmployeeCard} />
+          <CheckboxLabel htmlFor="agreement_id">
+            Я согласен с политикой обработкой данных*
+          </CheckboxLabel>
+        </CheckboxContainer>
+        {formik.errors[EMPLOYEE_FIELD_NAMES.AGREEMENT] && (
+          <ErrorContainer>
+            {formik.errors[EMPLOYEE_FIELD_NAMES.AGREEMENT]}
+          </ErrorContainer>
+        )}
+        <Button name="Создать" type="submit" />
       </EmployeeFormContainer>
       {/* Если в левой части от && у вас false, то правая часть(JSX элементы) не показываются, 
       если же левая часть от && true, то правая часть(JSX элементы) отображается */}
@@ -141,20 +142,22 @@ function EmployeeForm() {
         <EmployeeCard>
           <EmployeeInfoContainer>
             <EmployeeTitle>Имя</EmployeeTitle>
-            <EmployeeInfoText>{name}</EmployeeInfoText>
+            <EmployeeInfoText>{userInfo.name}</EmployeeInfoText>
           </EmployeeInfoContainer>
           <EmployeeInfoContainer>
             <EmployeeTitle>Фамилия</EmployeeTitle>
-            <EmployeeInfoText>{lastName}</EmployeeInfoText>
+            <EmployeeInfoText>{userInfo.lastName}</EmployeeInfoText>
           </EmployeeInfoContainer>
           <EmployeeInfoContainer>
             <EmployeeTitle>Возраст</EmployeeTitle>
-            <EmployeeInfoText>{age}</EmployeeInfoText>
+            <EmployeeInfoText>{userInfo.ageValue}</EmployeeInfoText>
           </EmployeeInfoContainer>
-          <EmployeeInfoContainer>
-            <EmployeeTitle>Должность</EmployeeTitle>
-            <EmployeeInfoText>{jobPosition}</EmployeeInfoText>
-          </EmployeeInfoContainer>
+          {!!userInfo.jobPosition && (
+            <EmployeeInfoContainer>
+              <EmployeeTitle>Должность</EmployeeTitle>
+              <EmployeeInfoText>{userInfo.jobPosition}</EmployeeInfoText>
+            </EmployeeInfoContainer>
+          )}
         </EmployeeCard>
       )}
     </EmployeeFormWrapper>
