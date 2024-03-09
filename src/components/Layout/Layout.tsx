@@ -8,6 +8,8 @@ import {
   Main,
   Footer,
   StyledNavLink,
+  NavContainerFooter,
+  StyledNavLinkFooter,
 } from "./styles";
 
 function Layout({ children }: LayoutProps) {
@@ -15,7 +17,9 @@ function Layout({ children }: LayoutProps) {
     <LayoutWrapper>
       <Header>
         <HeaderLogoContainer>
-          <HeaderLogo />
+          <StyledNavLink to="/">
+            <HeaderLogo />
+          </StyledNavLink>
         </HeaderLogoContainer>
         <NavContainer>
           <StyledNavLink
@@ -38,6 +42,14 @@ function Layout({ children }: LayoutProps) {
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
             })}
+            to="/clients"
+          >
+            Clients
+          </StyledNavLink>
+          <StyledNavLink
+            style={({ isActive }) => ({
+              textDecoration: isActive ? "underline" : "none",
+            })}
             to="/about"
           >
             About
@@ -45,7 +57,42 @@ function Layout({ children }: LayoutProps) {
         </NavContainer>
       </Header>
       <Main>{children}</Main>
-      <Footer></Footer>
+      <Footer>
+        <NavContainerFooter>
+          <StyledNavLinkFooter
+            style={({ isActive }) => ({
+              textDecoration: isActive ? "underline" : "none",
+            })}
+            to="/"
+          >
+            Home
+          </StyledNavLinkFooter>
+          <StyledNavLinkFooter
+            style={({ isActive }) => ({
+              textDecoration: isActive ? "underline" : "none",
+            })}
+            to="/users"
+          >
+            Users
+          </StyledNavLinkFooter>
+          <StyledNavLinkFooter
+            style={({ isActive }) => ({
+              textDecoration: isActive ? "underline" : "none",
+            })}
+            to="/clients"
+          >
+            Clients
+          </StyledNavLinkFooter>
+          <StyledNavLinkFooter
+            style={({ isActive }) => ({
+              textDecoration: isActive ? "underline" : "none",
+            })}
+            to="/about"
+          >
+            About
+          </StyledNavLinkFooter>
+        </NavContainerFooter>
+      </Footer>
     </LayoutWrapper>
   );
 }

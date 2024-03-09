@@ -39,6 +39,12 @@ export const NavContainer = styled.nav`
   gap: 10px;
 `;
 
+export const NavContainerFooter = styled.nav`
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+`;
+
 export const Main = styled.main`
   display: flex;
   flex-direction: column;
@@ -49,7 +55,7 @@ export const Footer = styled.footer`
   display: flex;
   padding: 30px;
   width: 100%;
-  height: 100px;
+  height: 150px;
   background-color: ${colors.primary};
   color: white;
 `;
@@ -57,5 +63,11 @@ export const Footer = styled.footer`
 export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   font-size: 20px;
+  color: white;
+`;
+
+export const StyledNavLinkFooter = styled(NavLink)`
+  text-decoration: none;
+  font-size: 12px;
   color: white;
 `;
