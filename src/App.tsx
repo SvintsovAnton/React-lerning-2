@@ -7,6 +7,10 @@ import Layout from "components/Layout/Layout";
 import Home from "pages/Home/Home";
 import About from "pages/About/About";
 import Users from "pages/Users/Users";
+import Clients from "pages/Clients/Clients";
+import LifferEssen from "pages/Clients/LieferEssen/LifferEssen";
+import TechnoPlus from "pages/Clients/TechnoPlus/TechnoPlus";
+import WorkSpaceStudio from "pages/Clients/WorkSpaceStudio/WorkSpaceStudio";
 
 // Lessons
 import Lesson20 from "lessons/Lesson20/Lesson20";
@@ -34,6 +38,10 @@ function App() {
           <Route path="/users" element={<Users />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element="Page Not Found" />
+          <Route path="/clients" element={<Clients />} />
+          <Route path="/clients/lifferessen" element={<LifferEssen />} />
+          <Route path="/clients/technoplus" element={<TechnoPlus />} />
+          <Route path="/clients/workspacetudio" element={<WorkSpaceStudio />} />
         </Routes>
       </Layout>
       {/* <Lesson20 /> */}
