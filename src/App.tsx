@@ -19,6 +19,7 @@ import Lesson22 from "lessons/Lesson 22/Lesson22";
 import Lesson23 from "lessons/Lesson 23/Lesson23";
 import Lesson24 from "lessons/Lesson 24/Lesson24";
 import Lesson25 from "lessons/Lesson25";
+import Lesson27 from "lessons/Lesson27/Lesson27";
 
 // Homeworks
 import HomeWork20 from "homeworks/Homework20";
@@ -32,24 +33,25 @@ function App() {
   return (
     <BrowserRouter>
       <GlobalStyles />
-      <Layout>
+      {/* <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/users" element={<Users />} />
           <Route path="/about" element={<About />} />
-          <Route path="*" element="Page Not Found" />
           <Route path="/clients" element={<Clients />} />
-          <Route path="/clients/lifferessen" element={<LifferEssen />} />
-          <Route path="/clients/technoplus" element={<TechnoPlus />} />
-          <Route path="/clients/workspacetudio" element={<WorkSpaceStudio />} />
+          <Route path="/clients/apple" element={<Apple />} />
+          <Route path="/clients/facebook" element={<Facebook />} />
+          <Route path="/clients/sega" element={<Sega />} />
+          <Route path="*" element="Page Not Found" />
         </Routes>
-      </Layout>
+      </Layout> */}
       {/* <Lesson20 /> */}
       {/* <Lesson21 /> */}
       {/* <Lesson22 /> */}
       {/* <Lesson23 /> */}
       {/* <Lesson24 /> */}
       {/* <Lesson25 /> */}
+      <Lesson27 />
       {/* <Homework20 /> */}
       {/* <Homework21 /> */}
       {/* <Homework22 /> */}
